@@ -1,6 +1,16 @@
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
+import Main from "../components/Main";
+
+import { Container } from "../styles/Layout";
+
 const Home: React.FC = () => {
   return (
-    <h1>Clone Youtube!</h1>
+    <Container>
+      <Header />
+      <Sidebar />
+      <Main />
+    </Container>
   )
 }
 
