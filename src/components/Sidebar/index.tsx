@@ -21,7 +21,7 @@ import { GiBedLamp } from 'react-icons/gi';
 
 import UserAvatar from '../../assets/avatar.png';
 
-import { Container, Box, Item } from './styles';
+import { Container, Box, Item, Notification } from './styles';
 
 const Sidebar: React.FC = () => {
   const [isSelected, setIsSelected] = useState(true);
@@ -73,6 +73,7 @@ const Sidebar: React.FC = () => {
         <Item>
           <img src={UserAvatar} />
           Channel 01
+          <Notification />
         </Item>
         <Item>
           <img src={UserAvatar} />
@@ -93,6 +94,10 @@ const Sidebar: React.FC = () => {
         <Item>
           <img src={UserAvatar} />
           Channel 06
+        </Item>
+        <Item>
+          <img src={UserAvatar} />
+          Channel 07
         </Item>
         <Item>
           <FiChevronDown size={24} color="#909090" />

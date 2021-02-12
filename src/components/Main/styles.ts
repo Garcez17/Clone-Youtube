@@ -3,14 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.main`
   grid-area: DB;
   background: #181818;
-  padding: 24px;
+  padding: 24px 16px;
   overflow: auto;
 
   div + header {
     border-top: 1px solid #303030;
     margin-top: 24px;
     padding-top: 32px;
-    
   }
 `;
 

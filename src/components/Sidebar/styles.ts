@@ -6,18 +6,16 @@ export const Container = styled.aside`
   overflow: auto;
 
   ::-webkit-scrollbar {
-    display: none;
+    /* display: none; */
     width: 10px;
   }
 
   ::-webkit-scrollbar-thumb {
     background: #989898; 
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    visibility: visible; 
+    display: none;
   }
 
-  &:hover ::-webkit-scrollbar {
+  &:hover ::-webkit-scrollbar-thumb {
     display: block;
   }
 `;
@@ -111,6 +109,15 @@ export const Item = styled.li<ItemProps>`
   }
 
   &:hover {
-    background: ${props => props.isSelected ? '#606060' : '#404040'};;
+    background: ${props => props.isSelected ? '#606060' : '#404040'};
   }
+`;
+
+export const Notification = styled.div`
+  width: 4px;
+  height: 4px;
+  background: #3ea6ff;
+  border-radius: 50%;
+
+  margin-left: auto;
 `;
