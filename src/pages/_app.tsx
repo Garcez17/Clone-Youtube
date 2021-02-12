@@ -1,9 +1,12 @@
+import AppProvider from '../hooks';
 import GlobalStyles from '../styles/GlobalStyles';
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Component {...pageProps} />
+      <AppProvider>
+        <Component {...pageProps} />
+      </AppProvider>
       <GlobalStyles />
     </>
   )

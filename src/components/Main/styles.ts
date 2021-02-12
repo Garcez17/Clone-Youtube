@@ -1,16 +1,31 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.main`
+interface ContainerProps {
+  isOpened: boolean;
+}
+
+export const Container = styled.main<ContainerProps>`
   grid-area: DB;
   background: #181818;
-  padding: 24px 16px;
+  padding: 24px 0;
+
+  ${props => props.isOpened && css`
+    padding-right: 16px;
+  `};
+
   overflow: auto;
+  display: flex;
+  justify-content: center;
 
   div + header {
     border-top: 1px solid #303030;
     margin-top: 24px;
     padding-top: 32px;
   }
+`;
+
+export const Wrapper = styled.div`
+  max-width: 1047px;
 `;
 
 export const MainHeader = styled.header`

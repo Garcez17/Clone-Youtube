@@ -1,19 +1,29 @@
+import { useCallback } from 'react';
 import Image from 'next/image';
-import { Container, Menu, SearchBar, Buttons } from './styles';
 import { FiMenu, FiSearch } from 'react-icons/fi';
 import { GoDeviceCameraVideo } from 'react-icons/go';
 import { AiFillBell } from 'react-icons/ai';
 import { CgMenuGridR } from 'react-icons/cg';
 import { IoMdMic } from 'react-icons/io';
 
+import { useToogleSidebarState } from '../../hooks/Sidebar';
+
 import LogoImg from '../../assets/ytb-logo.png';
 import UserAvatar from '../../assets/userAvatar.jpg';
 
+import { Container, Menu, SearchBar, Buttons, ContainerBtn } from './styles';
+
 const Header: React.FC = () => {
+  const { toogleView, isOpened } = useToogleSidebarState();
+
+  const handleChangeSidebarView = useCallback(() => {
+    toogleView(!isOpened);
+  }, [isOpened]);
+
   return (
     <Container>
       <Menu>
-        <button>
+        <button onClick={handleChangeSidebarView}>
           <FiMenu size={22} color="#fff" />
         </button>
 
@@ -26,9 +36,14 @@ const Header: React.FC = () => {
       <SearchBar>
         <div>
           <input type="text" placeholder="Pesquisar" />
-          <button>
-            <FiSearch size={18} color="#727272" />
-          </button>
+          <ContainerBtn>
+            <button>
+              <FiSearch size={18} color="#727272" />
+            </button>
+            <div>
+              <span>Pesquisar</span>
+            </div>
+          </ContainerBtn>
         </div>
         <button>
           <IoMdMic size={22} color="#fff" />
@@ -36,9 +51,30 @@ const Header: React.FC = () => {
       </SearchBar>
 
       <Buttons>
-        <GoDeviceCameraVideo size={20} color="#fff" />
-        <CgMenuGridR size={24} color="#fff" />
-        <AiFillBell size={22} color="#fff" />
+        <ContainerBtn>
+          <button>
+            <GoDeviceCameraVideo size={20} color="#fff" />
+          </button>
+          <div>
+            <span>Criar</span>
+          </div>
+        </ContainerBtn>
+        <ContainerBtn>
+          <button>
+            <CgMenuGridR size={24} color="#fff" />
+          </button>
+          <div>
+            <span>Aplicativos do YouTube</span>
+          </div>
+        </ContainerBtn>
+        <ContainerBtn>
+          <button>
+            <AiFillBell size={22} color="#fff" />
+          </button>
+          <div>
+            <span>Notificações</span>
+          </div>
+        </ContainerBtn>
 
         <button>
           <img src={UserAvatar} height={32} width={32} />

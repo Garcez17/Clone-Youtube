@@ -17,6 +17,7 @@ export const Menu = styled.div`
   > button {
     padding: 8px;
     margin-right: 16px;
+    outline: none;
   }
 
   > div {
@@ -56,6 +57,10 @@ export const SearchBar = styled.div`
       color: rgba(255, 255, 255, 0.88);
     }
 
+    input:focus {
+      border-color: #1C62B9;
+    }
+
     button {
       width: 65px;
       height: 30px;
@@ -67,9 +72,11 @@ export const SearchBar = styled.div`
 export const Buttons = styled.div`
   display: flex;
   align-items: center;
-  
-  svg + svg {
-    margin-left: 24px;
+
+  > div:nth-child(2) {
+    > div {
+      min-width: 145px;
+    }
   }
 
   > button {
@@ -77,5 +84,42 @@ export const Buttons = styled.div`
     > img {
       border-radius: 50%;
     }
+  }
+`;
+
+export const ContainerBtn = styled.div`
+  position: relative;
+
+  > div {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: rgba(89, 89, 89, 0.9);
+
+    padding: 10px 8px;
+    border-radius: 4px;
+
+    transition: 0.2s;
+
+    > span {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.88);
+    }
+  }
+
+  
+
+  &:hover div {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  & + div {
+    margin-left: 24px; 
   }
 `;
