@@ -11,7 +11,7 @@ import { useToogleSidebarState } from '../../hooks/Sidebar';
 import LogoImg from '../../assets/ytb-logo.png';
 import UserAvatar from '../../assets/userAvatar.jpg';
 
-import { Container, Menu, SearchBar, Buttons, ContainerBtn } from './styles';
+import { Container, Menu, SearchBar, ContainerInput, Buttons, ContainerBtn } from './styles';
 
 const Header: React.FC = () => {
   const { toogleView, isOpened } = useToogleSidebarState();
@@ -34,7 +34,7 @@ const Header: React.FC = () => {
       </Menu>
 
       <SearchBar>
-        <div>
+        <ContainerInput>
           <input type="text" placeholder="Pesquisar" />
           <ContainerBtn>
             <button>
@@ -44,10 +44,15 @@ const Header: React.FC = () => {
               <span>Pesquisar</span>
             </div>
           </ContainerBtn>
-        </div>
-        <button>
-          <IoMdMic size={22} color="#fff" />
-        </button>
+        </ContainerInput>
+        <ContainerBtn>
+          <button>
+            <IoMdMic size={22} color="#fff" />
+          </button>
+          <div className="large">
+            <span>Pesquisar com sua voz</span>
+          </div>
+        </ContainerBtn>
       </SearchBar>
 
       <Buttons>

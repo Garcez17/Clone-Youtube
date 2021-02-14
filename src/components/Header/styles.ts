@@ -36,36 +36,36 @@ export const Menu = styled.div`
 export const SearchBar = styled.div`
   display: flex;
   align-items: center;
+`;
 
-  > div {
-    display: flex;
-    align-items: center;
-    padding: 0 4px;
-    margin-right: 8px;
+export const ContainerInput = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  margin-right: 8px;
 
-    input {
-      width: 575px;
-      height: 30px;
-      background: #121212;
-      border: 1px solid #323232;
+  input {
+    width: 575px;
+    height: 30px;
+    background: #121212;
+    border: 1px solid #323232;
 
-      font-size: 1.6rem;
-      font-weight: 400;
-      line-height: 24px;
-      padding: 0 6px;
-      outline: none;
-      color: rgba(255, 255, 255, 0.88);
-    }
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 0 6px;
+    outline: none;
+    color: rgba(255, 255, 255, 0.88);
+  }
 
-    input:focus {
-      border-color: #1C62B9;
-    }
+  input:focus {
+    border-color: #1C62B9;
+  }
 
-    button {
-      width: 65px;
-      height: 30px;
-      background: #323232;
-    }
+  button {
+    width: 65px;
+    height: 30px;
+    background: #323232;
   }
 `;
 
@@ -97,6 +97,7 @@ export const ContainerBtn = styled.div`
     top: 50px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 99;
 
     background: rgba(89, 89, 89, 0.9);
 
@@ -107,12 +108,14 @@ export const ContainerBtn = styled.div`
 
     > span {
       font-size: 1.2rem;
-      font-weight: 500;
+      font-weight: 400;
       color: rgba(255, 255, 255, 0.88);
     }
   }
 
-  
+  div.large {
+    min-width: 142px;
+  }
 
   &:hover div {
     opacity: 1;

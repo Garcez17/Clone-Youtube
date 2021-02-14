@@ -1,12 +1,9 @@
 import styled from 'styled-components';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 
 export const Container = styled.div`
-  h3 {
-    font-size: 1.4rem;
-    font-weight: 500;
-    line-height: 16px;
-    color: #fff;
-    padding: 8px 0;
+  &:hover {
+    cursor: pointer;
   }
 `;
 
@@ -153,7 +150,8 @@ export const Informations = styled.div`
   display: flex;
   flex-direction: column;
 
-  span {
+  > span {
+    max-width: 178px;
     display: flex;
     align-items: center;
     font-size: 1.3rem;
@@ -164,5 +162,108 @@ export const Informations = styled.div`
     svg {
       margin-left: 4px;
     }
+  }
+`;
+
+export const LiveContainer = styled.div`
+  width: 100px;
+  height: 20px;
+  border: 1px solid #FF4E45;
+  border-radius: 2px;
+  margin-top: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  strong {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 12px;
+    color: #FF4E45;
+  }
+`;
+
+export const ProgrammedContainer = styled.div`
+  background: #303030;
+  width: 142px;
+  padding: 6px 0;
+  border-radius: 2px;
+  margin-top: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  strong {
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 12px;
+    color: #aaaaaa;
+  }
+`;
+
+export const Title = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 16px;
+    color: #fff;
+  }
+`;
+
+export const ThreeDotsIcon = styled(BsThreeDotsVertical)`
+  width: 26px;
+  height: 26px;
+  color: #909090;
+  margin-top: -4px;
+  cursor: pointer;
+
+  transition: 0.2s;
+
+  &:hover {
+    color: #fff;
+  }
+`;
+
+export const ContainerBtn = styled.div`
+  position: relative;
+
+  div.info {
+    width: 340px;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-70%);
+    z-index: 99;
+
+    background: rgba(89, 89, 89, 0.9);
+
+    padding: 10px 8px;
+    border-radius: 4px;
+
+    transition: 0.2s;
+
+    > span {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.88);
+    }
+  }
+
+  &:hover div {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  & + div {
+    margin-left: 24px; 
   }
 `;

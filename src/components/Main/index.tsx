@@ -24,10 +24,10 @@ const Main: React.FC = () => {
 
         <VideosGrid>
           <Video isVerified />
-          <Video />
-          <Video />
+          <Video isLive />
+          <Video isProgrammed />
           <Video isVerified />
-          <Video />
+          <Video isProgrammed />
           <Video />
           <Video />
           <Video isVerified />
