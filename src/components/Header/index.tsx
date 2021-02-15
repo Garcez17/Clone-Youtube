@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { FiMenu, FiSearch } from 'react-icons/fi';
 import { GoDeviceCameraVideo } from 'react-icons/go';
@@ -12,16 +12,24 @@ import LogoImg from '../../assets/ytb-logo.png';
 import UserAvatar from '../../assets/userAvatar.jpg';
 
 import { Container, Menu, SearchBar, ContainerInput, Buttons, ContainerBtn } from './styles';
+import VoiceModal, { ModalHandles } from './VoiceModal';
 
 const Header: React.FC = () => {
+  const modalRef = useRef<ModalHandles>();
   const { toogleView, isOpened } = useToogleSidebarState();
 
   const handleChangeSidebarView = useCallback(() => {
     toogleView(!isOpened);
   }, [isOpened]);
 
+  const handleOpenModal = useCallback(() => {
+    modalRef.current?.openModal();
+  }, []);
+
   return (
     <Container>
+      <VoiceModal ref={modalRef} />
+
       <Menu>
         <button onClick={handleChangeSidebarView}>
           <FiMenu size={22} color="#fff" />
@@ -46,7 +54,7 @@ const Header: React.FC = () => {
           </ContainerBtn>
         </ContainerInput>
         <ContainerBtn>
-          <button>
+          <button onClick={handleOpenModal}>
             <IoMdMic size={22} color="#fff" />
           </button>
           <div className="large">

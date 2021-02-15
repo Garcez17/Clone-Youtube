@@ -122,7 +122,6 @@ export const QueueButton = styled.div<ButtonsProps>`
   }
 `;
 
-
 export const Timer = styled.div`
   position: absolute;
   display: flex;
@@ -132,7 +131,7 @@ export const Timer = styled.div`
 
   min-width: 35px;
   height: 18px;
-  border-radius: 4px;
+  border-radius: 2px;
 
   font-size: 1.2rem;
   letter-spacing: 0.5px;

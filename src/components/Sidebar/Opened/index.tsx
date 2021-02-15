@@ -9,15 +9,17 @@ import {
   MdSettings,
   MdFlag,
   MdHelp,
-  MdFeedback
+  MdFeedback,
+  MdPlaylistPlay
 } from 'react-icons/md';
 import { RiFireFill } from 'react-icons/ri';
 import { RiVideoLine } from 'react-icons/ri';
 import { AiFillClockCircle } from 'react-icons/ai';
 import { FaYoutube, FaGamepad, FaTrophy } from 'react-icons/fa';
-import { FiChevronDown } from 'react-icons/fi';
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { CgMediaLive } from 'react-icons/cg';
 import { GiBedLamp } from 'react-icons/gi';
+import { BsFillPlusCircleFill } from 'react-icons/bs';
 
 import UserAvatar from '../../../assets/avatar.png';
 
@@ -25,6 +27,8 @@ import { Container, Box, Item, Notification } from './styles';
 
 const Opened: React.FC = () => {
   const [isSelected, setIsSelected] = useState(true);
+  const [openPlaylists, setOpenPlaylists] = useState(false);
+  const [isChannelsOpen, setIsChannelOpen] = useState(false);
   
   return (
     <Container>
@@ -38,7 +42,7 @@ const Opened: React.FC = () => {
           Em alta
         </Item>
         <Item isSelected>
-          <MdSubscriptions size={22} color={isSelected ? "#fff" : "#909090"} />
+          <MdSubscriptions size={24} color={isSelected ? "#fff" : "#909090"} />
           Inscrições
         </Item>
       </Box>
@@ -48,25 +52,51 @@ const Opened: React.FC = () => {
           Biblioteca
         </Item>
         <Item>
-          <MdHistory size={22} color="#909090" />
+          <MdHistory size={24} color="#909090" />
           Histórico
         </Item>
         <Item>
-          <RiVideoLine size={22} color="#909090" />
+          <RiVideoLine size={24} color="#909090" />
           Seus vídeos
         </Item>
         <Item>
-          <AiFillClockCircle size={22} color="#909090" />
+          <AiFillClockCircle size={24} color="#909090" />
           Assistir mais tarde
         </Item>
         <Item>
-          <MdThumbUp size={20} color="#909090" />
+          <MdThumbUp size={24} color="#909090" />
           Vídeos marcados co...
         </Item>
-        <Item>
-          <FiChevronDown size={24} color="#909090" />
-          Mostrar mais
-        </Item>
+
+        {openPlaylists && (
+          <>
+          <Item>
+            <MdPlaylistPlay size={24} color="#909090" />
+            Playlist 01
+          </Item>
+          <Item>
+            <MdPlaylistPlay size={24} color="#909090" />
+            Playlist 02
+          </Item>
+          <Item>
+            <MdPlaylistPlay size={24} color="#909090" />
+            Playlist 03
+          </Item>
+          </>
+        )}
+
+        {openPlaylists ? (
+          <Item onClick={() => setOpenPlaylists(false)}>
+            <FiChevronUp size={24} color="#909090" />
+            Mostrar menos
+          </Item>
+        ) : (
+          <Item onClick={() => setOpenPlaylists(true)}>
+            <FiChevronDown size={24} color="#909090" />
+            Mostrar mais
+          </Item>
+        )}
+
       </Box>
       <Box>
         <h2>INSCRIÇÕES</h2>
@@ -102,10 +132,50 @@ const Opened: React.FC = () => {
           Channel 07
           <Notification />
         </Item>
-        <Item>
-          <FiChevronDown size={24} color="#909090" />
-          Mostrar mais 103
-        </Item>
+
+        {isChannelsOpen && (
+          <>
+            <Item>
+              <img src={UserAvatar} />
+              Channel 08
+            </Item>
+            <Item>
+              <img src={UserAvatar} />
+              Channel 09
+              <Notification />
+            </Item>
+            <Item>
+              <img src={UserAvatar} />
+              Channel 10
+              <Notification />
+            </Item>
+            <Item>
+              <img src={UserAvatar} />
+              Channel 11
+            </Item>
+            <Item>
+              <img src={UserAvatar} />
+              Channel 12
+            </Item>
+            <Item>
+              <BsFillPlusCircleFill size={22} color="#909090" />
+              Procurar canais
+            </Item>
+          </>
+        )}
+
+        {isChannelsOpen ? (
+          <Item onClick={() => setIsChannelOpen(false)}>
+            <FiChevronUp size={24} color="#909090" />
+            Mostrar menos
+          </Item>
+        ) : (
+          <Item onClick={() => setIsChannelOpen(true)}>
+            <FiChevronDown size={24} color="#909090" />
+            Mostrar mais 5
+          </Item>
+        )}
+        
       </Box>
       <Box>
         <h2>MAIS DO YOUTUBE</h2>
