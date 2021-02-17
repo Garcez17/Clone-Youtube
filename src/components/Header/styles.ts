@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.header`
   grid-area: HD;
@@ -125,4 +125,53 @@ export const ContainerBtn = styled.div`
   & + div {
     margin-left: 24px; 
   }
+`;
+
+interface ContainerOptions {
+  isOpen: boolean;
+  left?: boolean;
+}
+
+export const ContainerOptions = styled.section<ContainerOptions>`
+  position: absolute;
+  top: 120%;
+  left: ${props => props.left ? '0' : '-55%'};
+  z-index: 99;
+  padding: 4px 0;
+  ${props => props.left && css`
+    transform: translateX(-85%);
+  `}
+  display: ${props => props.isOpen ? 'block' : 'none'};
+
+  background: rgba(36, 36, 36, 0.98);
+  border-left: 1px solid #373737;
+  border-right: 1px solid #373737;
+
+  button {
+    width: ${props => props.left ? '302px' : '200px'};
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 21px;
+    color: #fff;
+
+    transition: 0.2s;
+
+    svg {
+      margin-right: 16px;
+    }
+
+    &:hover {
+      background: rgba(76, 76, 76, 0.5);
+    }
+  }
+`;
+
+export const Separator = styled.div`
+  border-top: 1px solid #373737;
+  margin: 8px 0;
 `;

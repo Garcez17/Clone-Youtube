@@ -1,22 +1,49 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import Image from 'next/image';
 import { FiMenu, FiSearch } from 'react-icons/fi';
 import { GoDeviceCameraVideo } from 'react-icons/go';
 import { AiFillBell } from 'react-icons/ai';
-import { CgMenuGridR } from 'react-icons/cg';
+import { CgMenuGridR, CgMediaLive } from 'react-icons/cg';
 import { IoMdMic } from 'react-icons/io';
+import { AiOutlinePlaySquare } from 'react-icons/ai';
+import { SiYoutubetv, SiYoutube } from 'react-icons/si';
 
 import { useToogleSidebarState } from '../../hooks/Sidebar';
 
 import LogoImg from '../../assets/ytb-logo.png';
 import UserAvatar from '../../assets/userAvatar.jpg';
 
-import { Container, Menu, SearchBar, ContainerInput, Buttons, ContainerBtn } from './styles';
 import VoiceModal, { ModalHandles } from './VoiceModal';
+import { 
+  Container,
+  Menu,
+  SearchBar,
+  ContainerInput,
+  Buttons,
+  ContainerBtn,
+  ContainerOptions,
+  Separator
+} from './styles';
 
 const Header: React.FC = () => {
   const modalRef = useRef<ModalHandles>();
   const { toogleView, isOpened } = useToogleSidebarState();
+  const [isheaderVideoOptionsOpen, setIsHeaderVideoOptionsOpen] = useState(false);
+  const [isheaderYoutubeOptionsOpen, setIsHeaderYoutubeOptionsOpen] = useState(false);
+
+  const handleToogleHeaderVideoOptions = useCallback(() => {
+    setIsHeaderVideoOptionsOpen(!isheaderVideoOptionsOpen);
+    if (isheaderYoutubeOptionsOpen) {
+      setIsHeaderYoutubeOptionsOpen(false);
+    }
+  }, [isheaderVideoOptionsOpen, isheaderYoutubeOptionsOpen]);
+
+  const handleToogleHeaderYoutubeOptions = useCallback(() => {
+    setIsHeaderYoutubeOptionsOpen(!isheaderYoutubeOptionsOpen);
+    if (isheaderVideoOptionsOpen) {
+      setIsHeaderVideoOptionsOpen(false);
+    }
+  }, [isheaderYoutubeOptionsOpen, isheaderVideoOptionsOpen]);
 
   const handleChangeSidebarView = useCallback(() => {
     toogleView(!isOpened);
@@ -65,20 +92,54 @@ const Header: React.FC = () => {
 
       <Buttons>
         <ContainerBtn>
-          <button>
+          <button onClick={handleToogleHeaderVideoOptions}>
             <GoDeviceCameraVideo size={20} color="#fff" />
           </button>
           <div>
             <span>Criar</span>
           </div>
+          <ContainerOptions isOpen={isheaderVideoOptionsOpen}>
+            <button>
+              <AiOutlinePlaySquare size={24} color="#6F6F6F" />
+              Enviar vídeo
+            </button>
+            <button>
+              <CgMediaLive size={24} color="#6F6F6F" />
+              Transmitir ao vivo
+            </button>
+          </ContainerOptions>
         </ContainerBtn>
         <ContainerBtn>
-          <button>
+          <button onClick={handleToogleHeaderYoutubeOptions}>
             <CgMenuGridR size={24} color="#fff" />
           </button>
           <div>
             <span>Aplicativos do YouTube</span>
           </div>
+          <ContainerOptions left isOpen={isheaderYoutubeOptionsOpen}>
+            <button>
+              <SiYoutubetv size={24} color="#FF0000" />
+              YouTube TV
+            </button>
+            <Separator />
+            <button>
+              <SiYoutube size={24} color="#FF0000" />
+              YouTube Music
+            </button>
+            <button>
+              <SiYoutube size={24} color="#FF0000" />
+              YouTube Kids
+            </button>
+            <Separator />
+            <button>
+              <SiYoutube size={24} color="#FF0000" />
+              Escola de Criadores de Conteúdo
+            </button>
+            <button>
+              <SiYoutube size={24} color="#FF0000" />
+              YouTube para Artistas
+            </button>
+          </ContainerOptions>
         </ContainerBtn>
         <ContainerBtn>
           <button>

@@ -12,8 +12,6 @@ export interface ModalHandles {
 const VoiceModal: React.ForwardRefRenderFunction<ModalHandles> = (props, ref) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(isOpen);
-
   const openModal = useCallback(() => {
     setIsOpen(true);
   }, []);
